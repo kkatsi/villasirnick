@@ -4,7 +4,8 @@
     "app/**/*",
     "app/**/.server/**/*",
     "app/**/.client/**/*",
-    "server/**/*"
+    "server/**/*",
+    "vite.config.ts"
   ],
   "compilerOptions": {
     "composite": true,
