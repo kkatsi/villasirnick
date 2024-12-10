@@ -1,28 +1,35 @@
-import React from 'react';
 import { imageUris } from '~/contants';
+import GalleryDialog from './GalleryDialog';
+import { useState } from 'react';
 
 const PhotoGrid = () => {
-  let i = 0;
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   return (
     <div className="flex flex-col">
-      <div className="flex flex-wrap justify-between gap-2">
+      {/* Use CSS Grid for precise layout control */}
+      <div className="grid grid-cols-2 gap-2">
         {imageUris.map((uri, index) => {
           const shouldBeLarge = index % 3 === 0;
           if (index < 4)
             return (
               <button
-                className={`rounded-xl shadow-md overflow-hidden ${
-                  shouldBeLarge ? 'w-full' : 'w-[calc(50%-4px)]'
+                key={index} // Add unique key for React list rendering
+                className={`rounded-xl shadow-2xl overflow-hidden ${
+                  shouldBeLarge ? 'col-span-2' : ''
                 }`}
               >
-                <img src={uri} alt="house" className={`aspect-video object-cover`} />
+                <img src={uri} alt="house" className="aspect-video object-cover w-full" />
               </button>
             );
         })}
       </div>
-      <button className="border rounded-2xl border-violet-600 text-violet-600 hover:bg-violet-600 hover:text-white mt-4 py-2 px-10 m-auto w-full">
+      <button
+        onClick={() => setIsDialogOpen(true)}
+        className="rounded-2xl bg-violet-600 text-white mt-4 py-2 px-10 m-auto w-full"
+      >
         See {imageUris.length - 3} more photos...
       </button>
+      <GalleryDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} />
     </div>
   );
 };

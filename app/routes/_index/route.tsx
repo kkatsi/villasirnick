@@ -6,11 +6,12 @@ import Details from './components/Details';
 import Host from './components/Host';
 import ContactButton from './components/ContactButton';
 import PhotoGrid from './components/PhotoGrid';
+import GalleryDialog from './components/GalleryDialog';
 
 const Home = () => {
   return (
     <div className="flex w-full min-h-screen items-center py-20 justify-center bg-stone-300">
-      <main className="container rounded-3xl bg-white p-16 grid grid-cols-[40%_60%] gap-8">
+      <main className="container rounded-3xl bg-white p-20 grid grid-cols-[2fr_3fr] gap-8">
         <div className="content flex flex-col gap-9">
           <TitleAndLocation />
           <ContactButton />
