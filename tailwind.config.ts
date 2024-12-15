@@ -33,6 +33,9 @@ export default {
         overlayShow: 'overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
         contentShow: 'contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
       },
+      // boxShadow: {
+      //   outline: '0 0 0 1px #7C3AED',
+      // },
     },
   },
 } satisfies Config;

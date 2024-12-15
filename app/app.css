@@ -10,3 +10,7 @@ body {
     color-scheme: dark;
   } */
 }
+/* 
+input:focus-visible {
+  outline: none !important;
+} */

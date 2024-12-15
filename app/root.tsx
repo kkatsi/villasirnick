@@ -7,6 +7,8 @@ import {
   ScrollRestoration,
 } from 'react-router';
 
+import { Toaster } from 'react-hot-toast';
+
 import type { Route } from './+types/root';
 import stylesheet from './app.css?url';
 
@@ -43,7 +45,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+      <Toaster />
+    </>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
