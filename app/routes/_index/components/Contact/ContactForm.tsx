@@ -19,7 +19,7 @@ const ContactForm = () => {
   }, [fetcher?.data?.isSuccess, toast]);
 
   return (
-    <fetcher.Form method="post" className="flex flex-col gap-5">
+    <fetcher.Form method="post" className="flex flex-col gap-5 w-full">
       <div className="flex justify-between w-full gap-4">
         <Input name="firstName" placeholder="First Name" label="First Name" required />
         <Input name="lastName" placeholder="Last Name" label="Last Name" required />
