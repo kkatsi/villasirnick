@@ -1,11 +1,12 @@
 import React, { AnchorHTMLAttributes } from 'react';
 import { imageUris } from '~/contants';
 import FullArrowDown from '~/assets/icons/full-arrow-down.svg?react';
+import { Link } from 'react-router';
 
 const Hero: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = (props) => {
   return (
-    <a
-      href="#content"
+    <Link
+      to="#content"
       className="container sticky top-1/2 py-[15dvh] transform -translate-y-1/2 h-[100dvh] flex justify-center items-center"
       {...props}
     >
@@ -25,7 +26,7 @@ const Hero: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = (props) => {
           className="w-full h-full object-cover rounded-3xl"
         />
       </div>
-    </a>
+    </Link>
   );
 };
 
