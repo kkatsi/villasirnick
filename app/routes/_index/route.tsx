@@ -42,7 +42,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex w-full min-h-screen items-center justify-center flex-col bg-stone-300">
+    <div className="flex w-full min-h-screen items-center justify-center flex-col bg-gray-50">
       <Hero
         style={{
           opacity: animationOffset?.opacityOffset,
@@ -51,9 +51,9 @@ const Home = () => {
       />
       <section
         id="content"
-        className="container rounded-tl-3xl rounded-tr-3xl bg-white p-20 flex flex-col gap-8 -mt-12 isolate"
+        className="container shadow-whole rounded-tl-3xl rounded-tr-3xl bg-white py-12 px-4 sm:p-14 lg:p-20 flex flex-col gap-8 -mt-12 isolate"
       >
-        <main className="grid grid-cols-[2fr_3fr] gap-8">
+        <main className="flex flex-col lg:grid lg:grid-cols-[2fr_3fr] gap-8">
           <div className="content flex flex-col gap-9">
             <TitleAndLocation />
             <ContactButton />

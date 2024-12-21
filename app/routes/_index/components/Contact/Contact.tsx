@@ -12,9 +12,9 @@ const Contact = () => {
           please feel free to get in touch.
         </p>
       </div>
-      <div className="grid grid-cols-[40%_20%_40%] w-full">
+      <div className="flex flex-col gap-12 lg:gap-0 lg:grid lg:grid-cols-[40%_20%_40%] w-full">
         <ContactForm />
-        <div className="flex items-center justify-center">
+        <div className="items-center justify-center hidden lg:flex">
           <hr className="transform rotate-90 h-[1px] border-0 w-32 bg-gray-400" />
         </div>
         <ContactInfo />
