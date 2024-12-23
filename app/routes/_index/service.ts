@@ -36,9 +36,7 @@ export const forwardMessageToEmail = async (data: IContactForm): Promise<string>
 export const verifyCaptcha = async (captcha: string) => {
   try {
     const response = await fetch(
-      `https://www.google.com/recaptcha/api/siteverify?secret=${
-        import.meta.env.VITE_CAPTCHA_SECRET_KEY
-      }&response=${captcha}`,
+      `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.CAPTCHA_SECRET_KEY}&response=${captcha}`,
       { method: 'POST' }
     );
     console.log(response);
