@@ -9,13 +9,20 @@ import Hero from './components/Hero';
 import Host from './components/Host';
 import PhotoGrid from './components/PhotoGrid';
 import TitleAndLocation from './components/TitleAndLocation';
-import { forwardMessageToEmail } from './service';
+import { forwardMessageToEmail, verifyCaptcha } from './service';
 import { IContactForm } from './types';
 
 export async function action({ request }: Route.ActionArgs) {
   let formData = await request.formData();
   const data = Object.fromEntries(formData) as unknown as IContactForm;
-  return await forwardMessageToEmail(data);
+  try {
+    if (!data.captcha) throw new Error('No captcha provided!');
+    await verifyCaptcha(data.captcha);
+    await forwardMessageToEmail(data);
+    return { isSuccess: true };
+  } catch (error) {
+    return { isSuccess: false, error };
+  }
 }
 
 const Home = () => {

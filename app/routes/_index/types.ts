@@ -4,4 +4,5 @@ export interface IContactForm {
   email: string;
   message: string;
   phone?: string;
+  captcha: string;
 }

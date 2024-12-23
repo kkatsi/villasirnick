@@ -1,21 +1,22 @@
 import nodemailer from 'nodemailer';
 import { IContactForm } from './types';
+import { config } from '~/config';
 
-export const forwardMessageToEmail = async (
-  data: IContactForm
-): Promise<{ isSuccess: boolean; error?: any }> => {
+export const forwardMessageToEmail = async (data: IContactForm): Promise<string> => {
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: config.mailSender.host,
+    port: config.mailSender.port,
+    secure: true,
     auth: {
-      user: 'kotsoulis@gmail.com',
-      pass: 'arzf tkml ollz ftjz',
+      user: config.mailSender.user,
+      pass: config.mailSender.password,
     },
   });
 
   const mailOptions = {
-    to: 'kotsoulis@gmail.com',
-    from: data.email,
-    subject: `${data.email} sent you a message about Villa Sir Nick: ${data.firstName} ${data.lastName}`,
+    to: config.mailReceiverAddress,
+    from: config.mailSender.user,
+    subject: `${data.firstName} ${data.lastName} sent you a message about Villa Sir Nick: ${data.email}`,
     text: data.message,
   };
 
@@ -23,11 +24,26 @@ export const forwardMessageToEmail = async (
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error('Error sending email:', error);
-        resolve({ isSuccess: false, error });
+        throw new Error(`Error sending email: ${error}`);
       } else {
         console.log('Email sent successfully:', info.response);
-        resolve({ isSuccess: true });
+        resolve(`Email sent successfully: ${info.response}`);
       }
     });
   });
+};
+
+export const verifyCaptcha = async (captcha: string) => {
+  try {
+    const response = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${
+        import.meta.env.VITE_CAPTCHA_SECRET_KEY
+      }&response=${captcha}`,
+      { method: 'POST' }
+    );
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+    throw new Error('Captcha verification failed!');
+  }
 };
