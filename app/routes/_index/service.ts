@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 import { IContactForm } from './types';
-import { config } from '~/config';
+import { config } from '~/config/backend';
 
 export const forwardMessageToEmail = async (data: IContactForm): Promise<string> => {
   const transporter = nodemailer.createTransport({

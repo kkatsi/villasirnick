@@ -7,7 +7,6 @@ export const config = {
   },
   mailReceiverAddress: process.env.MAIL_RECEIVER_ADDRESS,
   captcha: {
-    secretKey: process.env.CAPTCH_SECRET_KEY,
-    siteKey: process.env.CAPTCHA_SITE_KEY,
+    secretKey: process.env.CAPTCHA_SECRET_KEY,
   },
 };
