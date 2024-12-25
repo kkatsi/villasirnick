@@ -13,7 +13,6 @@ import type { Route } from './+types/root';
 import stylesheet from './app.css?url';
 
 import { GoogleReCaptchaProvider } from '@google-recaptcha/react';
-import { config } from './config';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -48,9 +47,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  console.log(config.captcha.siteKey);
   return (
-    <GoogleReCaptchaProvider type="v2-checkbox" siteKey={config.captcha.siteKey}>
+    <GoogleReCaptchaProvider
+      type="v2-checkbox"
+      siteKey={'6LePQ6QqAAAAAHZMfWftxqKXAb42egmwbXK_AWfg'}
+    >
       <Outlet />
       <Toaster />
     </GoogleReCaptchaProvider>
