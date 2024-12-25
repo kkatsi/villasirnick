@@ -34,11 +34,16 @@ const PhoneInput = () => {
         </button>
         <select
           ref={selectRef}
-          className="w-14 px-3 py-2 focus:outline-violet-600 rounded-tl-lg rounded-bl-lg cursor-pointer"
+          name="dialCode"
+          className="w-14 px-3 py-2 bg-transparent focus:outline-violet-600 rounded-tl-lg rounded-bl-lg cursor-pointer"
           onChange={handleSelectChange}
         >
           {countries.map((country) => (
-            <option key={country.code} value={country.dial_code}>
+            <option
+              key={country.code}
+              value={country.dial_code}
+              selected={country.code === selectedCountryCode}
+            >
               {country.name}
             </option>
           ))}

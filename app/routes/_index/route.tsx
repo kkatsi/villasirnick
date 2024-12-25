@@ -11,6 +11,53 @@ import PhotoGrid from './components/PhotoGrid';
 import TitleAndLocation from './components/TitleAndLocation';
 import { forwardMessageToEmail, verifyCaptcha } from './service';
 import { IContactForm } from './types';
+import { config } from '~/config/backend';
+
+export function meta() {
+  return [
+    { title: 'Villa Sir Nick | Luxury Vacation Rental in Thessaloniki, Greece' },
+    {
+      property: 'og:title',
+      content: 'Villa Sir Nick | Luxury Vacation Rental in Thessaloniki, Greece',
+    },
+    {
+      name: 'description',
+      content:
+        'Experience unparalleled luxury and relaxation at Villa Sir Nick in Thessaloniki, Greece. Perfect for families, couples, and groups. Book now on Airbnb or directly with us!',
+    },
+    {
+      name: 'keywords',
+      content:
+        'Villa Sir Nick, luxury villa rental, vacation in Greece, Thessaloniki villa, Airbnb Thessaloniki, private villa Greece, vacation rental Greece, luxury accommodation Thessaloniki, Sir Nick villa, Greek villa rental, best villas in Thessaloniki, luxury holidays in Greece, villa rental near Thessaloniki, airbnb luxury Greece, Thessaloniki Airbnb villa, relax in Greece, villa with sea view, holiday home Thessaloniki',
+    },
+    {
+      property: 'og:description',
+      content:
+        'Discover the beauty of Thessaloniki, Greece, with a stay at Villa Sir Nick. Stunning views, elegant interiors, and world-class amenities await you.',
+    },
+    { property: 'og:image', content: `${config.domain}/photos/1.jpg` },
+    { property: 'og:url', content: `${config.domain}` },
+    { property: 'og:type', content: 'website' },
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+    {
+      name: 'twitter:title',
+      content: 'Villa Sir Nick | Luxury Vacation Rental in Thessaloniki, Greece',
+    },
+    {
+      name: 'twitter:description',
+      content:
+        'Escape to paradise at Villa Sir Nick in Thessaloniki. Enjoy breathtaking views, luxury amenities, and an unforgettable experience in Greece.',
+    },
+    { name: 'twitter:image', content: `${config.domain}/photos/1.jpg` },
+    {
+      name: 'robots',
+      content: 'index, follow',
+    },
+  ];
+}
 
 export async function action({ request }: Route.ActionArgs) {
   let formData = await request.formData();
@@ -58,7 +105,7 @@ const Home = () => {
       />
       <section
         id="content"
-        className="container shadow-whole rounded-tl-3xl rounded-tr-3xl bg-white py-12 px-4 sm:p-14 lg:p-20 flex flex-col gap-8 -mt-12 isolate"
+        className="container shadow-whole rounded-tl-3xl rounded-tr-3xl bg-white py-12 px-4 sm:p-14 lg:p-20 flex flex-col gap-8 sm:-mt-12 isolate"
       >
         <main className="flex flex-col lg:grid lg:grid-cols-[2fr_3fr] gap-8">
           <div className="content flex flex-col gap-9">

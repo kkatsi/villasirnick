@@ -51,7 +51,7 @@ const ContactForm = () => {
         onChange={handleCaptchaChange}
         errorCallback={() => setIsCaptchaCompleted(false)}
       />
-      <input type="text" hidden name="captcha" ref={captchaInputRef} />
+      <input type="text" readOnly hidden name="captcha" ref={captchaInputRef} />
       <button
         type="submit"
         disabled={fetcher.state !== 'idle' || !isCaptchaCompleted}
