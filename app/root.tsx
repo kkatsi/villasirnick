@@ -48,9 +48,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  console.log(config.captcha.siteKey || 'error');
   return (
-    <GoogleReCaptchaProvider type="v2-checkbox" siteKey={config.captcha.siteKey}>
+    <GoogleReCaptchaProvider type="v2-checkbox" siteKey="6LePQ6QqAAAAAHZMfWftxqKXAb42egmwbXK_AWfg">
       <Outlet />
       <Toaster />
     </GoogleReCaptchaProvider>
