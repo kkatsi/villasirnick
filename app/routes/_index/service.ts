@@ -1,11 +1,11 @@
 import nodemailer from 'nodemailer';
 import { IContactForm } from './types';
-import { config } from '~/config';
+import { config } from '~/config/backend';
 
 export const forwardMessageToEmail = async (data: IContactForm): Promise<string> => {
   const transporter = nodemailer.createTransport({
     host: config.mailSender.host,
-    port: config.mailSender.port,
+    port: Number(config.mailSender.port),
     secure: true,
     auth: {
       user: config.mailSender.user,
@@ -26,7 +26,6 @@ export const forwardMessageToEmail = async (data: IContactForm): Promise<string>
         console.error('Error sending email:', error);
         throw new Error(`Error sending email: ${error}`);
       } else {
-        console.log('Email sent successfully:', info.response);
         resolve(`Email sent successfully: ${info.response}`);
       }
     });
@@ -35,11 +34,10 @@ export const forwardMessageToEmail = async (data: IContactForm): Promise<string>
 
 export const verifyCaptcha = async (captcha: string) => {
   try {
-    const response = await fetch(
-      `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.CAPTCHA_SECRET_KEY}&response=${captcha}`,
+    await fetch(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${config.captcha.secretKey}&response=${captcha}`,
       { method: 'POST' }
     );
-    console.log(response);
   } catch (error) {
     console.error(error);
     throw new Error('Captcha verification failed!');
