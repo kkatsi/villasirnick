@@ -11,7 +11,7 @@ import PhotoGrid from './components/PhotoGrid';
 import TitleAndLocation from './components/TitleAndLocation';
 import { forwardMessageToEmail, verifyCaptcha } from './service';
 import { IContactForm } from './types';
-import { config } from '~/config/backend';
+import { config } from '~/config/frontend';
 
 export function meta() {
   return [

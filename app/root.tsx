@@ -13,7 +13,6 @@ import type { Route } from './+types/root';
 import stylesheet from './app.css?url';
 
 import { GoogleReCaptchaProvider } from '@google-recaptcha/react';
-import { config } from './config/frontend';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },

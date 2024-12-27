@@ -1,4 +1,5 @@
 export const config = {
+  domain: 'https://villasirnick.gr',
   contact: {
     dialCode: '+30',
     dialCodeWithoutPlus: '+30',

@@ -44,12 +44,16 @@ const Gallery: React.FC<GalleryProps> = ({ defaultActiveIndex }) => {
         {imageUris.map((uri, index) => (
           <li
             key={uri}
-            data-active={index === activeIndex}
             className={`absolute flex select-none pointer-events-none md:px-2 lg:px-[25px] items-center justify-center bg-black opacity-0 transition-[200ms] duration-[opacity] ease-[ease-in-out] delay-200 inset-0 ${
               activeIndex === index ? 'opacity-100 z-[1] delay-[0ms]' : ''
             }`}
           >
-            <img src={uri} alt="house" className="w-auto max-h-full block md:rounded-xl" />
+            <img
+              src={uri}
+              alt="house"
+              className="w-auto max-h-full block md:rounded-xl"
+              loading="lazy"
+            />
           </li>
         ))}
       </ul>

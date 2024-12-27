@@ -1,5 +1,4 @@
 export const config = {
-  domain: 'https://villasirnick.gr',
   mailSender: {
     host: process.env.MAIL_HOST,
     port: process.env.MAIL_PORT,

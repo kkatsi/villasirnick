@@ -26,6 +26,10 @@ const GalleryDialog: React.FC<GalleryDialogProps> = ({
           onPointerDownOutside={(event) => event.preventDefault()}
           className="fixed flex justify-between items-center left-1/2 top-1/2 h-screen w-screen -translate-x-1/2 -translate-y-1/2 rounded-md bg-transparent md:p-2 lg:p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none data-[state=open]:animate-contentShow"
         >
+          <Dialog.Title className="hidden">Photo Gallery</Dialog.Title>
+          <Dialog.Description className="hidden">
+            Explore a collection of photos showcasing the home's interior and exterior designs.
+          </Dialog.Description>
           <Gallery defaultActiveIndex={defaultActiveIndex} />
         </Dialog.Content>
       </Dialog.Portal>

@@ -3,16 +3,16 @@ import { countries } from '~/contants';
 import ArrowDown from '~/assets/icons/arrow-down.svg?react';
 
 const PhoneInput = () => {
-  const [selectedCountryCode, setSelectedCountryCode] = useState(
-    countries.find((country) => country.code === 'GR')?.code
+  const [selectedCountryDialCode, setSelectedCountryDialCode] = useState(
+    countries.find((country) => country.code === 'GR')?.dial_code
   );
 
   const selectRef = useRef<HTMLSelectElement>(null);
 
   const handleSelectChange = (event: FocusEvent<HTMLSelectElement, Element>) => {
     const prefix = event.target.value;
-    const countryCode = countries.find((country) => country.dial_code === prefix)?.code;
-    setSelectedCountryCode(countryCode);
+    const countryDialCode = countries.find((country) => country.dial_code === prefix)?.dial_code;
+    setSelectedCountryDialCode(countryDialCode);
   };
   const handleCountryCodeClick = () => {
     selectRef.current?.focus();
@@ -30,20 +30,17 @@ const PhoneInput = () => {
           className="bg-white pointer-events-none absolute left-[7px] top-1/2 transform -translate-y-1/2 rounded-lg flex justify-center items-center w-12 outline-none"
           onClick={handleCountryCodeClick}
         >
-          {selectedCountryCode} <ArrowDown />
+          {selectedCountryDialCode} <ArrowDown />
         </button>
         <select
           ref={selectRef}
           name="dialCode"
+          defaultValue={selectedCountryDialCode}
           className="w-14 px-3 py-2 bg-transparent focus:outline-violet-600 rounded-tl-lg rounded-bl-lg cursor-pointer"
           onChange={handleSelectChange}
         >
           {countries.map((country) => (
-            <option
-              key={country.code}
-              value={country.dial_code}
-              selected={country.code === selectedCountryCode}
-            >
+            <option key={country.code} value={country.dial_code}>
               {country.name}
             </option>
           ))}
