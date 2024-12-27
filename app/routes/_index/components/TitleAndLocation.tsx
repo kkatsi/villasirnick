@@ -1,6 +1,7 @@
 import React from 'react';
 
 const TitleAndLocation = () => {
+  console.log('reernderd');
   return (
     <div>
       <h1 className="text-3xl font-normal">Villa Sir Nick</h1>
